@@ -1,4 +1,4 @@
-# BetaHorses
+# RainbowTrees
 
 A StationAPI mod that adds 16 colour trees to your minecraft world!
 
