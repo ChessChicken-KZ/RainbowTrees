@@ -1,50 +1,43 @@
 package kz.chesschicken.rainbowtrees.blocks;
 
-import kz.chesschicken.rainbowtrees.RainbowTrees;
+import kz.chesschicken.rainbowtrees.init.RainbowTreesListener;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockBase;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.EntityBase;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
-import net.minecraft.item.PlaceableTileEntity;
+import net.minecraft.level.BlockView;
 import net.minecraft.level.Level;
-import net.minecraft.level.TileView;
 import net.minecraft.stat.Stats;
-import net.modificationstation.stationloader.api.common.block.BlockItemProvider;
+import net.modificationstation.stationapi.api.registry.Identifier;
+import net.modificationstation.stationapi.api.template.block.TemplateLeaves;
 
 import java.util.Random;
 
-public class TileBlockColour_Leaves extends net.minecraft.class_307 implements BlockItemProvider {
+public class BlockColourLeaves extends TemplateLeaves {
 
     int[] field_1171;
 
-    public TileBlockColour_Leaves(int i) {
-        super(i, RainbowTrees.textColourLeaves_Fast, Material.LEAVES, false);
+    public BlockColourLeaves(Identifier i) {
+        super(i, RainbowTreesListener.textColourLeaves_Fast);
         this.setTicksRandomly(true);
         this.setHardness(0.2F);
         this.setLightOpacity(1);
-        this.sounds(GRASS_SOUNDS);
+        this.setSounds(GRASS_SOUNDS);
         this.disableStat();
         this.disableNotifyOnMetaDataChange();
         this.setTicksRandomly(true);
     }
 
-
-    public PlaceableTileEntity getBlockItem(int i) {
-        return new TileItemColour_Leaves(i);
+    @Override
+    public int getBaseColour(int i) {
+        return RainbowTreesListener.get16ColorCode(i);
     }
 
-    @Environment(EnvType.CLIENT)
-    public int method_1589(int i) {
-        return RainbowTrees.get16ColorCode(i);
-    }
-
-    @Environment(EnvType.CLIENT)
-    public int getColor(TileView arg, int x, int y, int z) {
-        return RainbowTrees.get16ColorCode(arg.getTileMeta(x,y,z));
+    @Override
+    public int getColourMultiplier(BlockView tileView, int x, int y, int z) {
+        return RainbowTreesListener.get16ColorCode(tileView.getTileMeta(x,y,z));
     }
 
     public void onBlockRemoved(Level level, int x, int y, int z) {
@@ -55,7 +48,7 @@ public class TileBlockColour_Leaves extends net.minecraft.class_307 implements B
                 for(int var8 = -var5; var8 <= var5; ++var8) {
                     for(int var9 = -var5; var9 <= var5; ++var9) {
                         int var10 = level.getTileId(x + var7, y + var8, z + var9);
-                        if (var10 == RainbowTrees.blockLeavesC.id) {
+                        if (var10 == RainbowTreesListener.leaves_colour.id) {
                             int var11 = level.getTileMeta(x + var7, y + var8, z + var9);
                             level.method_223(x + var7, y + var8, z + var9, var11);
                         }
@@ -137,7 +130,7 @@ public class TileBlockColour_Leaves extends net.minecraft.class_307 implements B
                                 var15 = level.getTileId(x + var12, y + var13, z + var14);
                                 if (var15 == BlockBase.LOG.id) {
                                     this.field_1171[(var12 + var11) * var10 + (var13 + var11) * var9 + var14 + var11] = 0;
-                                } else if (var15 == RainbowTrees.blockLeavesC.id) {
+                                } else if (var15 == RainbowTreesListener.leaves_colour.id) {
                                     this.field_1171[(var12 + var11) * var10 + (var13 + var11) * var9 + var14 + var11] = -2;
                                 } else {
                                     this.field_1171[(var12 + var11) * var10 + (var13 + var11) * var9 + var14 + var11] = -1;
@@ -170,13 +163,13 @@ public class TileBlockColour_Leaves extends net.minecraft.class_307 implements B
     }
 
     public int getDropId(int meta, Random rand) {
-        return RainbowTrees.blockSaplingC.id;
+        return RainbowTreesListener.sapling_colour.id;
     }
 
     public void afterBreak(Level arg, PlayerBase arg1, int x, int y, int z, int i1) {
         if (!arg.isClient && arg1.getHeldItem() != null && arg1.getHeldItem().itemId == ItemBase.shears.id) {
-            arg1.increaseStat(Stats.STAT_MINE_BLOCK[this.id], 1);
-            this.drop(arg, x, y, z, new ItemInstance(RainbowTrees.blockLeavesC.id, 1, i1));
+            arg1.increaseStat(Stats.mineBlock[this.id], 1);
+            this.drop(arg, x, y, z, new ItemInstance(RainbowTreesListener.leaves_colour.id, 1, i1));
         } else {
             super.afterBreak(arg, arg1, x, y, z, i1);
         }
@@ -188,21 +181,16 @@ public class TileBlockColour_Leaves extends net.minecraft.class_307 implements B
     }
 
     public boolean isFullOpaque() {
-        return !this.field_1192;
+        return !this.isTransparent;
     }
 
     public int getTextureForSide(int side, int meta) {
-        return RainbowTrees.textColourLeaves_Fast;
+        return RainbowTreesListener.textColourLeaves_Fast;
     }
 
     @Environment(EnvType.CLIENT)
     public void method_991(boolean flag) {
-        this.field_1192 = flag;
-        this.texture = flag ? RainbowTrees.textColourLeaves : RainbowTrees.textColourLeaves_Fast;
+        this.isTransparent = flag;
+        this.texture = flag ? RainbowTreesListener.textColourLeaves : RainbowTreesListener.textColourLeaves_Fast;
     }
-
-    public void method_1560(Level arg, int i, int j, int k, EntityBase arg1) {
-        super.method_1560(arg, i, j, k, arg1);
-    }
-
 }

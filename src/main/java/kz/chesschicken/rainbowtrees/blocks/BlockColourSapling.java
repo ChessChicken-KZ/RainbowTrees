@@ -1,52 +1,40 @@
 package kz.chesschicken.rainbowtrees.blocks;
 
-import kz.chesschicken.rainbowtrees.RainbowTrees;
 import kz.chesschicken.rainbowtrees.api.ColourTreeStructure;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.minecraft.block.Plant;
+import kz.chesschicken.rainbowtrees.init.RainbowTreesListener;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemBase;
-import net.minecraft.item.PlaceableTileEntity;
+import net.minecraft.level.BlockView;
 import net.minecraft.level.Level;
-import net.minecraft.level.TileView;
 import net.minecraft.level.structure.Structure;
-import net.modificationstation.stationloader.api.common.block.BlockItemProvider;
+import net.modificationstation.stationapi.api.registry.Identifier;
+import net.modificationstation.stationapi.api.template.block.TemplatePlant;
 
 import java.util.Random;
 
-public class TileBlockColour_Sapling extends Plant implements BlockItemProvider {
-    public TileBlockColour_Sapling(int id) {
-        super(id, RainbowTrees.textColourSapling);
+public class BlockColourSapling extends TemplatePlant {
+    public BlockColourSapling(Identifier id) {
+        super(id, RainbowTreesListener.textColourSapling);
         this.setTicksRandomly(true);
         this.disableNotifyOnMetaDataChange();
         float var3 = 0.4F;
         this.setBoundingBox(0.5F - var3, 0.0F, 0.5F - var3, 0.5F + var3, var3 * 2.0F, 0.5F + var3);
     }
 
-    @Environment(EnvType.CLIENT)
-    public int getColor(TileView arg, int x, int y, int z) {
-        return RainbowTrees.get16ColorCode(arg.getTileMeta(x, y, z));
+    @Override
+    public int getColourMultiplier(BlockView tileView, int x, int y, int z) {
+        return RainbowTreesListener.get16ColorCode(tileView.getTileMeta(x, y, z));
     }
-
 
     @Override
     public int getTextureForSide(int side) {
-        return RainbowTrees.textColourSapling;
+        return RainbowTreesListener.textColourSapling;
     }
 
     @Override
     public int getTextureForSide(int side, int meta) {
-        return RainbowTrees.textColourSapling;
+        return RainbowTreesListener.textColourSapling;
     }
-
-    public PlaceableTileEntity getBlockItem(int i) {
-        return new TileItemColour_Sapling(i);
-    }
-
-
-
-
 
     @Override
     public void onScheduledTick(Level level, int x, int y, int z, Random rand) {
@@ -76,13 +64,12 @@ public class TileBlockColour_Sapling extends Plant implements BlockItemProvider 
         //UPDATE THIS
         int var6 = arg.getTileMeta(i, j, k);
         arg.setTileInChunk(i, j, k, 0);
-        Object var7 = null;
-        var7 = new ColourTreeStructure(metadata);
+        Structure var7 = new ColourTreeStructure(metadata);
 
-        if (!((Structure)var7).generate(arg, random, i, j, k))
+        if (!var7.generate(arg, random, i, j, k))
             arg.setTileWithMetadata(i, j, k, this.id, var6);
         else
-            ((Structure)var7).generate(arg, random, i, j, k);
+            var7.generate(arg, random, i, j, k);
     }
 
     protected int droppedMeta(int i) {

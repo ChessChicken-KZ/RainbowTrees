@@ -1,0 +1,52 @@
+tile.sapling_colour0.name=White Sapling
+tile.sapling_colour1.name=Orange Sapling
+tile.sapling_colour2.name=Magenta Sapling
+tile.sapling_colour3.name=Light Blue Sapling
+tile.sapling_colour4.name=Yellow Sapling
+tile.sapling_colour5.name=Light Green Sapling
+tile.sapling_colour6.name=Pink Sapling
+tile.sapling_colour7.name=Gray Sapling
+tile.sapling_colour8.name=Light Gray Sapling
+tile.sapling_colour9.name=Cyan Sapling
+tile.sapling_colour10.name=Purple Sapling
+tile.sapling_colour11.name=Blue Sapling
+tile.sapling_colour12.name=Brown Brown Sapling
+tile.sapling_colour13.name=Dark Green Sapling
+tile.sapling_colour14.name=Red Sapling
+tile.sapling_colour15.name=Black Sapling
+
+
+tile.leaves_colour0.name=White Leaves
+tile.leaves_colour1.name=Orange Leaves
+tile.leaves_colour2.name=Magenta Leaves
+tile.leaves_colour3.name=Light Blue Leaves
+tile.leaves_colour4.name=Yellow Leaves
+tile.leaves_colour5.name=Light Green Leaves
+tile.leaves_colour6.name=Pink Leaves
+tile.leaves_colour7.name=Gray Leaves
+tile.leaves_colour8.name=Light Gray Leaves
+tile.leaves_colour9.name=Cyan Leaves
+tile.leaves_colour10.name=Purple Leaves
+tile.leaves_colour11.name=Blue Leaves
+tile.leaves_colour12.name=Brown Brown Leaves
+tile.leaves_colour13.name=Dark Green Leaves
+tile.leaves_colour14.name=Red Leaves
+tile.leaves_colour15.name=Black Leaves
+
+
+tile.flower_colour0.name=White Flower
+tile.flower_colour1.name=Orange Flower
+tile.flower_colour2.name=Magenta Flower
+tile.flower_colour3.name=Light Blue Flower
+tile.flower_colour4.name=Yellow Flower
+tile.flower_colour5.name=Light Green Flower
+tile.flower_colour6.name=Pink Flower
+tile.flower_colour7.name=Gray Flower
+tile.flower_colour8.name=Light Gray Flower
+tile.flower_colour9.name=Cyan Flower
+tile.flower_colour10.name=Purple Flower
+tile.flower_colour11.name=Blue Flower
+tile.flower_colour12.name=Brown Brown Flower
+tile.flower_colour13.name=Dark Green Flower
+tile.flower_colour14.name=Red Flower
+tile.flower_colour15.name=Black Flower

@@ -6,29 +6,26 @@
   "name": "Rainbow Trees",
   "description": "16 colour trees mod!",
   "authors": [
-    "ChessChicken"
+    "ChessChicken-KZ"
   ],
   "contact": {
     "homepage": "https://github.com/ChessChicken-KZ/RainbowTrees",
-    "issues": "https://github.com/ChessChicken-Ru/RainbowTrees/issues",
-    "sources": "https://github.com/ChessChicken-Ru/RainbowTrees"
+    "issues": "https://github.com/ChessChicken-KZ/RainbowTrees/issues",
+    "sources": "https://github.com/ChessChicken-KZ/RainbowTrees"
   },
 
   "license": "MIT",
   "icon": "assets/rainbowtrees/icon.png",
 
   "entrypoints": {
-    "stationmod": [
-      "kz.chesschicken.rainbowtrees.RainbowTrees"
+    "stationapi:event_bus": [
+      "kz.chesschicken.rainbowtrees.init.RainbowTreesListener"
     ]
   },
 
   "depends": {
     "fabricloader": "*",
     "minecraft": "1.0.0-beta.7.3",
-    "stationloader":"*"
-  },
-  "suggests": {
-    "flamingo": "*"
+    "stationapi":"*"
   }
 }
