@@ -13,7 +13,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath 'com.github.Chocohead:Fabric-Loom:66ed9fe'
+		classpath 'com.github.Chocohead:Fabric-Loom:9b38aba'
 	}
 }
 
@@ -92,7 +92,7 @@ dependencies {
 
 	modImplementation "com.github.minecraft-cursed-legacy:cursed-fabric-loader:${project.loader_version}"
 
-	modImplementation 'com.github.ModificationStation:StationAPI:8ff5fd3fd2'
+	modImplementation 'com.github.ModificationStation:StationAPI:d6f9496e93'
 
 }
 
