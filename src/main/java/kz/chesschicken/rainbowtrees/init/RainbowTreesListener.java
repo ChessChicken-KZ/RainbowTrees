@@ -79,8 +79,7 @@ public class RainbowTreesListener {
 
     @SuppressWarnings("unused")
     @EventListener
-    public void registerBlocks(BlockRegistryEvent event)
-    {
+    public void registerBlocks(BlockRegistryEvent event) {
         sapling_colour = new BlockColourSapling(Identifier.of(modID, "sapling_colour")).setTranslationKey(modID, "sapling_colour");
         leaves_colour = new BlockColourLeaves(Identifier.of(modID, "leaves_colour")).setTranslationKey(modID, "leaves_colour");
         flower_colour = new BlockColourFlower(Identifier.of(modID, "flower_colour")).setTranslationKey(modID, "flower_colour");
@@ -89,7 +88,6 @@ public class RainbowTreesListener {
     @SuppressWarnings("unused")
     @EventListener
     public void registerTextures(TextureRegisterEvent event) {
-
         textColourSapling = Atlases.getStationTerrain().addTexture("/assets/rainbowtrees/textures/block/sapling_colour.png").index;
         textColourLeaves = Atlases.getStationTerrain().addTexture("/assets/rainbowtrees/textures/block/leaves_colour.png").index;
         textColourLeaves_Fast = Atlases.getStationTerrain().addTexture("/assets/rainbowtrees/textures/block/leaves_colour_opaque.png").index;
@@ -98,7 +96,7 @@ public class RainbowTreesListener {
 
     @SuppressWarnings("unused")
     @EventListener
-    public void populateTrees(LevelGenEvent.ChunkDecoration chunkDecoration)
+    public void generateTrees(LevelGenEvent.ChunkDecoration chunkDecoration)
     {
         if (chunkDecoration.levelSource.getClass() == OverworldLevelSource.class)
         {
@@ -117,16 +115,11 @@ public class RainbowTreesListener {
     @EventListener
     public void registerRecipes(RecipeRegisterEvent event)
     {
-        switch (RecipeRegisterEvent.Vanilla.fromType(event.recipeId))
-        {
-            case CRAFTING_SHAPELESS:
-            {
-                for(int i = 0; i < 16; i++) {
-                    CraftingRegistry.addShapelessRecipe(
-                            new ItemInstance(ItemBase.dyePowder, 1, 15 - i),
-                            new ItemInstance(flower_colour, 1, i));
-                }
-            }
+        if (RecipeRegisterEvent.Vanilla.fromType(event.recipeId) == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS) {
+            for (int i = 0; i < 16; i++)
+                CraftingRegistry.addShapelessRecipe(
+                        new ItemInstance(ItemBase.dyePowder, 1, 15 - i),
+                        new ItemInstance(flower_colour, 1, i));
         }
 
     }

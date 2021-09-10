@@ -9,14 +9,14 @@ import net.modificationstation.stationapi.api.template.block.TemplatePlant;
 
 import java.util.Random;
 
-@HasCustomBlockItemFactory(TileItemColour_Flower.class)
+@HasCustomBlockItemFactory(ItemColourFlower.class)
 public class BlockColourFlower extends TemplatePlant implements MetaBlockItemProvider {
     public BlockColourFlower(Identifier id) {
         super(id, RainbowTreesListener.textColourFlower);
     }
 
     @Override
-    public int getTextureForSide(int side, int meta) {
+    public int getTextureForSide(int side) {
         return RainbowTreesListener.textColourFlower;
     }
 

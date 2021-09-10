@@ -16,10 +16,8 @@ import net.modificationstation.stationapi.api.template.block.TemplateLeaves;
 
 import java.util.Random;
 
-@HasCustomBlockItemFactory(TileItemColour_Leaves.class)
+@HasCustomBlockItemFactory(ItemColourLeaves.class)
 public class BlockColourLeaves extends TemplateLeaves {
-
-    int[] field_1171;
 
     public BlockColourLeaves(Identifier i) {
         super(i, RainbowTreesListener.textColourLeaves_Fast);
@@ -61,62 +59,63 @@ public class BlockColourLeaves extends TemplateLeaves {
 
     }
 
+    private int[] collection;
     public void onScheduledTick(Level level, int x, int y, int z, Random rand) {
         if (!level.isClient) {
-            int var6 = level.getTileMeta(x, y, z);
-            if ((var6 & 8) != 0) {
+            int meta = level.getTileMeta(x, y, z);
+            if ((meta & 8) != 0) {
                 byte var7 = 4;
                 int var8 = var7 + 1;
                 byte var9 = 32;
                 int var10 = var9 * var9;
                 int var11 = var9 / 2;
-                if (this.field_1171 == null) {
-                    this.field_1171 = new int[var9 * var9 * var9];
-                }
+                if (this.collection == null)
+                    this.collection = new int[var9 * var9 * var9];
+
 
                 int var12;
                 if (level.method_155(x - var8, y - var8, z - var8, x + var8, y + var8, z + var8)) {
                     var12 = -var7;
 
-                    label111:
+                    label_tree:
                     while(true) {
-                        int var13;
-                        int var14;
-                        int var15;
+                        int loop1;
+                        int loop2;
+                        int loop3;
                         if (var12 > var7) {
                             var12 = 1;
 
                             while(true) {
                                 if (var12 > 4) {
-                                    break label111;
+                                    break label_tree;
                                 }
 
-                                for(var13 = -var7; var13 <= var7; ++var13) {
-                                    for(var14 = -var7; var14 <= var7; ++var14) {
-                                        for(var15 = -var7; var15 <= var7; ++var15) {
-                                            if (this.field_1171[(var13 + var11) * var10 + (var14 + var11) * var9 + var15 + var11] == var12 - 1) {
-                                                if (this.field_1171[(var13 + var11 - 1) * var10 + (var14 + var11) * var9 + var15 + var11] == -2) {
-                                                    this.field_1171[(var13 + var11 - 1) * var10 + (var14 + var11) * var9 + var15 + var11] = var12;
+                                for(loop1 = -var7; loop1 <= var7; ++loop1) {
+                                    for(loop2 = -var7; loop2 <= var7; ++loop2) {
+                                        for(loop3 = -var7; loop3 <= var7; ++loop3) {
+                                            if (this.collection[(loop1 + var11) * var10 + (loop2 + var11) * var9 + loop3 + var11] == var12 - 1) {
+                                                if (this.collection[(loop1 + var11 - 1) * var10 + (loop2 + var11) * var9 + loop3 + var11] == -2) {
+                                                    this.collection[(loop1 + var11 - 1) * var10 + (loop2 + var11) * var9 + loop3 + var11] = var12;
                                                 }
 
-                                                if (this.field_1171[(var13 + var11 + 1) * var10 + (var14 + var11) * var9 + var15 + var11] == -2) {
-                                                    this.field_1171[(var13 + var11 + 1) * var10 + (var14 + var11) * var9 + var15 + var11] = var12;
+                                                if (this.collection[(loop1 + var11 + 1) * var10 + (loop2 + var11) * var9 + loop3 + var11] == -2) {
+                                                    this.collection[(loop1 + var11 + 1) * var10 + (loop2 + var11) * var9 + loop3 + var11] = var12;
                                                 }
 
-                                                if (this.field_1171[(var13 + var11) * var10 + (var14 + var11 - 1) * var9 + var15 + var11] == -2) {
-                                                    this.field_1171[(var13 + var11) * var10 + (var14 + var11 - 1) * var9 + var15 + var11] = var12;
+                                                if (this.collection[(loop1 + var11) * var10 + (loop2 + var11 - 1) * var9 + loop3 + var11] == -2) {
+                                                    this.collection[(loop1 + var11) * var10 + (loop2 + var11 - 1) * var9 + loop3 + var11] = var12;
                                                 }
 
-                                                if (this.field_1171[(var13 + var11) * var10 + (var14 + var11 + 1) * var9 + var15 + var11] == -2) {
-                                                    this.field_1171[(var13 + var11) * var10 + (var14 + var11 + 1) * var9 + var15 + var11] = var12;
+                                                if (this.collection[(loop1 + var11) * var10 + (loop2 + var11 + 1) * var9 + loop3 + var11] == -2) {
+                                                    this.collection[(loop1 + var11) * var10 + (loop2 + var11 + 1) * var9 + loop3 + var11] = var12;
                                                 }
 
-                                                if (this.field_1171[(var13 + var11) * var10 + (var14 + var11) * var9 + (var15 + var11 - 1)] == -2) {
-                                                    this.field_1171[(var13 + var11) * var10 + (var14 + var11) * var9 + (var15 + var11 - 1)] = var12;
+                                                if (this.collection[(loop1 + var11) * var10 + (loop2 + var11) * var9 + (loop3 + var11 - 1)] == -2) {
+                                                    this.collection[(loop1 + var11) * var10 + (loop2 + var11) * var9 + (loop3 + var11 - 1)] = var12;
                                                 }
 
-                                                if (this.field_1171[(var13 + var11) * var10 + (var14 + var11) * var9 + var15 + var11 + 1] == -2) {
-                                                    this.field_1171[(var13 + var11) * var10 + (var14 + var11) * var9 + var15 + var11 + 1] = var12;
+                                                if (this.collection[(loop1 + var11) * var10 + (loop2 + var11) * var9 + loop3 + var11 + 1] == -2) {
+                                                    this.collection[(loop1 + var11) * var10 + (loop2 + var11) * var9 + loop3 + var11 + 1] = var12;
                                                 }
                                             }
                                         }
@@ -127,15 +126,15 @@ public class BlockColourLeaves extends TemplateLeaves {
                             }
                         }
 
-                        for(var13 = -var7; var13 <= var7; ++var13) {
-                            for(var14 = -var7; var14 <= var7; ++var14) {
-                                var15 = level.getTileId(x + var12, y + var13, z + var14);
-                                if (var15 == BlockBase.LOG.id) {
-                                    this.field_1171[(var12 + var11) * var10 + (var13 + var11) * var9 + var14 + var11] = 0;
-                                } else if (var15 == RainbowTreesListener.leaves_colour.id) {
-                                    this.field_1171[(var12 + var11) * var10 + (var13 + var11) * var9 + var14 + var11] = -2;
+                        for(loop1 = -var7; loop1 <= var7; ++loop1) {
+                            for(loop2 = -var7; loop2 <= var7; ++loop2) {
+                                loop3 = level.getTileId(x + var12, y + loop1, z + loop2);
+                                if (loop3 == BlockBase.LOG.id) {
+                                    this.collection[(var12 + var11) * var10 + (loop1 + var11) * var9 + loop2 + var11] = 0;
+                                } else if (loop3 == RainbowTreesListener.leaves_colour.id) {
+                                    this.collection[(var12 + var11) * var10 + (loop1 + var11) * var9 + loop2 + var11] = -2;
                                 } else {
-                                    this.field_1171[(var12 + var11) * var10 + (var13 + var11) * var9 + var14 + var11] = -1;
+                                    this.collection[(var12 + var11) * var10 + (loop1 + var11) * var9 + loop2 + var11] = -1;
                                 }
                             }
                         }
@@ -144,9 +143,9 @@ public class BlockColourLeaves extends TemplateLeaves {
                     }
                 }
 
-                var12 = this.field_1171[var11 * var10 + var11 * var9 + var11];
+                var12 = this.collection[var11 * var10 + var11 * var9 + var11];
                 if (var12 >= 0) {
-                    level.method_223(x, y, z, var6);
+                    level.method_223(x, y, z, meta);
                 } else {
                     this.method_990(level, x, y, z);
                 }

@@ -13,7 +13,7 @@ import net.modificationstation.stationapi.api.template.block.TemplatePlant;
 
 import java.util.Random;
 
-@HasCustomBlockItemFactory(TileItemColour_Sapling.class)
+@HasCustomBlockItemFactory(ItemColourSapling.class)
 public class BlockColourSapling extends TemplatePlant {
     public BlockColourSapling(Identifier id) {
         super(id, RainbowTreesListener.textColourSapling);
@@ -30,11 +30,6 @@ public class BlockColourSapling extends TemplatePlant {
 
     @Override
     public int getTextureForSide(int side) {
-        return RainbowTreesListener.textColourSapling;
-    }
-
-    @Override
-    public int getTextureForSide(int side, int meta) {
         return RainbowTreesListener.textColourSapling;
     }
 

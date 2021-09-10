@@ -6,8 +6,9 @@ import net.fabricmc.api.Environment;
 import net.minecraft.item.ItemInstance;
 import net.modificationstation.stationapi.api.template.item.MetaBlock;
 
-public class TileItemColour_Sapling extends MetaBlock {
-    public TileItemColour_Sapling(int i) {
+public class ItemColourLeaves extends MetaBlock {
+
+    public ItemColourLeaves(int i) {
         super(i);
         this.setDurability(0);
         this.setHasSubItems(true);
@@ -19,11 +20,10 @@ public class TileItemColour_Sapling extends MetaBlock {
 
     @Environment(EnvType.CLIENT)
     public int getTexturePosition(int damage) {
-        return RainbowTreesListener.sapling_colour.getTextureForSide(0, damage);
+        return RainbowTreesListener.textColourLeaves;
     }
 
-    @Override public int getNameColour(int i) { return RainbowTreesListener.get16ColorCode(i); }
-
-
-
+    public int getNameColour(int i) {
+        return RainbowTreesListener.get16ColorCode(i);
+    }
 }
