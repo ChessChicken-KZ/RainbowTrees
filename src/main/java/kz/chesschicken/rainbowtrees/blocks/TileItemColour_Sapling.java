@@ -13,16 +13,9 @@ public class TileItemColour_Sapling extends MetaBlock {
         this.setHasSubItems(true);
     }
 
-    public int getMetaData(int i) {
-        return i;
-    }
-
-    @Environment(EnvType.CLIENT)
     public String getTranslationKey(ItemInstance item) {
         return getTranslationKey() + item.getDamage();
     }
-
-
 
     @Environment(EnvType.CLIENT)
     public int getTexturePosition(int damage) {

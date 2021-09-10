@@ -7,11 +7,13 @@ import net.minecraft.item.ItemBase;
 import net.minecraft.level.BlockView;
 import net.minecraft.level.Level;
 import net.minecraft.level.structure.Structure;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.TemplatePlant;
 
 import java.util.Random;
 
+@HasCustomBlockItemFactory(TileItemColour_Sapling.class)
 public class BlockColourSapling extends TemplatePlant {
     public BlockColourSapling(Identifier id) {
         super(id, RainbowTreesListener.textColourSapling);

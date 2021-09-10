@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Rainbow Trees",
-  "description": "16 colour trees mod!",
+  "description": "A StationAPI mod that adds 16 colour trees to your minecraft world!",
   "authors": [
     "ChessChicken-KZ"
   ],

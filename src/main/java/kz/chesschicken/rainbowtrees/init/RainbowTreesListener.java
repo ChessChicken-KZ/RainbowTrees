@@ -9,7 +9,7 @@ import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
 import net.minecraft.level.source.OverworldLevelSource;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
-import net.modificationstation.stationapi.api.client.texture.atlas.ExpandableAtlas;
+import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
 import net.modificationstation.stationapi.api.event.level.gen.LevelGenEvent;
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
@@ -90,10 +90,10 @@ public class RainbowTreesListener {
     @EventListener
     public void registerTextures(TextureRegisterEvent event) {
 
-        textColourSapling = ExpandableAtlas.STATION_TERRAIN.addTexture("/assets/rainbowtrees/textures/block/tileSapling.png").index;
-        textColourLeaves = ExpandableAtlas.STATION_TERRAIN.addTexture("/assets/rainbowtrees/textures/block/tileLeaves.png").index;
-        textColourLeaves_Fast = ExpandableAtlas.STATION_TERRAIN.addTexture("/assets/rainbowtrees/textures/block/tileLeavesOpaque.png").index;
-        textColourFlower = ExpandableAtlas.STATION_TERRAIN.addTexture("/assets/rainbowtrees/textures/block/tileFlower.png").index;
+        textColourSapling = Atlases.getStationTerrain().addTexture("/assets/rainbowtrees/textures/block/sapling_colour.png").index;
+        textColourLeaves = Atlases.getStationTerrain().addTexture("/assets/rainbowtrees/textures/block/leaves_colour.png").index;
+        textColourLeaves_Fast = Atlases.getStationTerrain().addTexture("/assets/rainbowtrees/textures/block/leaves_colour_opaque.png").index;
+        textColourFlower = Atlases.getStationTerrain().addTexture("/assets/rainbowtrees/textures/block/flower_colour.png").index;
     }
 
     @SuppressWarnings("unused")

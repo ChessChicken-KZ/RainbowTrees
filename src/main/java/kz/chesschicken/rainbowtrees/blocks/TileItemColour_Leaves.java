@@ -7,21 +7,18 @@ import net.minecraft.item.ItemInstance;
 import net.modificationstation.stationapi.api.template.item.MetaBlock;
 
 public class TileItemColour_Leaves extends MetaBlock {
+
     public TileItemColour_Leaves(int i) {
         super(i);
         this.setDurability(0);
         this.setHasSubItems(true);
     }
 
-    public int getMetaData(int i) {
-        return i;
-    }
-
-    @Environment(EnvType.CLIENT) @Override public String getTranslationKey(ItemInstance item) {
+    public String getTranslationKey(ItemInstance item) {
         return getTranslationKey() + item.getDamage();
     }
 
-    @Environment(EnvType.CLIENT) @Override
+    @Environment(EnvType.CLIENT)
     public int getTexturePosition(int damage) {
         return RainbowTreesListener.textColourLeaves;
     }

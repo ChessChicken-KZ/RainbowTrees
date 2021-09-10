@@ -10,11 +10,13 @@ import net.minecraft.item.ItemInstance;
 import net.minecraft.level.BlockView;
 import net.minecraft.level.Level;
 import net.minecraft.stat.Stats;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.TemplateLeaves;
 
 import java.util.Random;
 
+@HasCustomBlockItemFactory(TileItemColour_Leaves.class)
 public class BlockColourLeaves extends TemplateLeaves {
 
     int[] field_1171;

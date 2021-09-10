@@ -10,17 +10,25 @@ import java.util.Random;
 
 public class ColourTreeStructure extends Structure {
     public int randomTreeBlock;
-    private final int selectedType;
+    private int selectedType;
     private final int selectedMetadata;
+
     public ColourTreeStructure(int metadata)
     {
-        selectedType = (new Random()).nextInt(2);
         selectedMetadata = metadata;
-        randomTreeBlock = (new Random()).nextInt(3);
+    }
+
+    public ColourTreeStructure(int type, int metadata)
+    {
+        this.selectedType = type;
+        this.selectedMetadata = metadata;
     }
 
     @Override
     public boolean generate(Level level, Random rand, int x, int y, int z) {
+        selectedType = rand.nextInt(2);
+        randomTreeBlock = rand.nextInt(3);
+
         if((level.isAir(x, y, z) || level.getTileId(x, y, z) == BlockBase.SNOW.id || level.getTileId(x, y, z) == RainbowTreesListener.sapling_colour.id) && level.getMaterial(x,y-1,z) == Material.ORGANIC)
         {
             if(selectedType == 0)

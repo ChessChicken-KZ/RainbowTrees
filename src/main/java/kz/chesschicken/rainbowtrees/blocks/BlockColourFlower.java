@@ -2,14 +2,14 @@ package kz.chesschicken.rainbowtrees.blocks;
 
 import kz.chesschicken.rainbowtrees.init.RainbowTreesListener;
 import net.minecraft.level.BlockView;
-import net.modificationstation.stationapi.api.block.HasMetaBlockItem;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.block.MetaBlockItemProvider;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.template.block.TemplatePlant;
 
 import java.util.Random;
 
-@HasMetaBlockItem
+@HasCustomBlockItemFactory(TileItemColour_Flower.class)
 public class BlockColourFlower extends TemplatePlant implements MetaBlockItemProvider {
     public BlockColourFlower(Identifier id) {
         super(id, RainbowTreesListener.textColourFlower);

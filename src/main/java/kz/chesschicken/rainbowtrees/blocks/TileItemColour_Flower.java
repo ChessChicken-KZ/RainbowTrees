@@ -13,10 +13,6 @@ public class TileItemColour_Flower extends MetaBlock {
         this.setHasSubItems(true);
     }
 
-    public int getMetaData(int i) {
-        return i;
-    }
-
     @Environment(EnvType.CLIENT)
     public String getTranslationKey(ItemInstance item) {
         return getTranslationKey() + item.getDamage();
@@ -24,7 +20,7 @@ public class TileItemColour_Flower extends MetaBlock {
 
     @Environment(EnvType.CLIENT)
     public int getTexturePosition(int damage) {
-        return RainbowTreesListener.textColourFlower;
+        return RainbowTreesListener.flower_colour.getTextureForSide(0, damage);
     }
 
     @Override public int getNameColour(int i) { return RainbowTreesListener.get16ColorCode(i); }
