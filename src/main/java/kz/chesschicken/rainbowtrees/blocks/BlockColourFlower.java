@@ -15,6 +15,8 @@ public class BlockColourFlower extends TemplatePlant implements MetaBlockItemPro
 
     public BlockColourFlower(Identifier id) {
         super(id, 0);
+        this.setHardness(0.0F);
+        this.setSounds(GRASS_SOUNDS);
     }
 
     @Override

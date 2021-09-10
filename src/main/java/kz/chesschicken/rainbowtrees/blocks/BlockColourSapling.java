@@ -19,6 +19,8 @@ public class BlockColourSapling extends TemplatePlant {
 
     public BlockColourSapling(Identifier id) {
         super(id, 0);
+        this.setHardness(0.0F);
+        this.setSounds(GRASS_SOUNDS);
         this.setTicksRandomly(true);
         this.disableNotifyOnMetaDataChange();
         float var3 = 0.4F;
