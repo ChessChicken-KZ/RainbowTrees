@@ -1,5 +1,6 @@
 package kz.chesschicken.rainbowtrees.blocks;
 
+import kz.chesschicken.rainbowtrees.blocks.item.ItemColourFlower;
 import kz.chesschicken.rainbowtrees.init.RainbowTreesListener;
 import net.minecraft.level.BlockView;
 import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
@@ -11,8 +12,9 @@ import java.util.Random;
 
 @HasCustomBlockItemFactory(ItemColourFlower.class)
 public class BlockColourFlower extends TemplatePlant implements MetaBlockItemProvider {
+
     public BlockColourFlower(Identifier id) {
-        super(id, RainbowTreesListener.textColourFlower);
+        super(id, 0);
     }
 
     @Override
@@ -26,7 +28,9 @@ public class BlockColourFlower extends TemplatePlant implements MetaBlockItemPro
     }
 
     @Override
-    public int getDropId(int meta, Random rand) { return RainbowTreesListener.flower_colour.id; }
+    public int getDropId(int meta, Random rand) {
+        return RainbowTreesListener.flower_colour.id;
+    }
 
     protected int droppedMeta(int i) {
         return i;

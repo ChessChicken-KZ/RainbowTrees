@@ -1,6 +1,7 @@
 package kz.chesschicken.rainbowtrees.blocks;
 
 import kz.chesschicken.rainbowtrees.api.ColourTreeStructure;
+import kz.chesschicken.rainbowtrees.blocks.item.ItemColourSapling;
 import kz.chesschicken.rainbowtrees.init.RainbowTreesListener;
 import net.minecraft.entity.player.PlayerBase;
 import net.minecraft.item.ItemBase;
@@ -15,8 +16,9 @@ import java.util.Random;
 
 @HasCustomBlockItemFactory(ItemColourSapling.class)
 public class BlockColourSapling extends TemplatePlant {
+
     public BlockColourSapling(Identifier id) {
-        super(id, RainbowTreesListener.textColourSapling);
+        super(id, 0);
         this.setTicksRandomly(true);
         this.disableNotifyOnMetaDataChange();
         float var3 = 0.4F;
@@ -38,7 +40,7 @@ public class BlockColourSapling extends TemplatePlant {
         if (!level.isClient) {
             super.onScheduledTick(level, x, y, z, rand);
             if (level.getLightLevel(x, y + 1, z) >= 9 && rand.nextInt(90) == 0) {
-                    this.growTree(level, x, y, z, rand, level.getTileMeta(x, y, z));
+                    this.tryTreeGrowing(level, x, y, z, rand, level.getTileMeta(x, y, z));
             }
         }
     }
@@ -57,14 +59,14 @@ public class BlockColourSapling extends TemplatePlant {
         return false;
     }
 
-    public void growTree(Level arg, int i, int j, int k, Random random, int metadata) {
+    public void tryTreeGrowing(Level arg, int i, int j, int k, Random random, int metadata) {
         //UPDATE THIS
-        int var6 = arg.getTileMeta(i, j, k);
+        int meta = arg.getTileMeta(i, j, k);
         arg.setTileInChunk(i, j, k, 0);
         Structure var7 = new ColourTreeStructure(metadata);
 
         if (!var7.generate(arg, random, i, j, k))
-            arg.setTileWithMetadata(i, j, k, this.id, var6);
+            arg.setTileWithMetadata(i, j, k, this.id, meta);
         else
             var7.generate(arg, random, i, j, k);
     }

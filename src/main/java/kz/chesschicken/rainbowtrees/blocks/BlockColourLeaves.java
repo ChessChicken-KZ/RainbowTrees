@@ -1,5 +1,6 @@
 package kz.chesschicken.rainbowtrees.blocks;
 
+import kz.chesschicken.rainbowtrees.blocks.item.ItemColourLeaves;
 import kz.chesschicken.rainbowtrees.init.RainbowTreesListener;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -147,14 +148,14 @@ public class BlockColourLeaves extends TemplateLeaves {
                 if (var12 >= 0) {
                     level.method_223(x, y, z, meta);
                 } else {
-                    this.method_990(level, x, y, z);
+                    this.destroy(level, x, y, z);
                 }
             }
 
         }
     }
 
-    private void method_990(Level arg, int i, int j, int k) {
+    private void destroy(Level arg, int i, int j, int k) {
         this.drop(arg, i, j, k, arg.getTileMeta(i, j, k));
         arg.setTile(i, j, k, 0);
     }

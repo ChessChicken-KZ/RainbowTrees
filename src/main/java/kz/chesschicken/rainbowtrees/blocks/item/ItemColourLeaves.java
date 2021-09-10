@@ -1,4 +1,4 @@
-package kz.chesschicken.rainbowtrees.blocks;
+package kz.chesschicken.rainbowtrees.blocks.item;
 
 import kz.chesschicken.rainbowtrees.init.RainbowTreesListener;
 import net.fabricmc.api.EnvType;

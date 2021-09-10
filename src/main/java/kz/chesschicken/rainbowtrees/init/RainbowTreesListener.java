@@ -7,7 +7,6 @@ import kz.chesschicken.rainbowtrees.blocks.BlockColourSapling;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
-import net.minecraft.level.source.OverworldLevelSource;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
 import net.modificationstation.stationapi.api.event.level.gen.LevelGenEvent;
@@ -25,9 +24,9 @@ import java.awt.*;
 
 public class RainbowTreesListener {
 
-    public static int get16ColorCode(int colortype)
+    public static int get16ColorCode(int i)
     {
-        switch (colortype)
+        switch (i)
         {
             case 0:
                 return new Color(221,221,221).getRGB();
@@ -96,17 +95,17 @@ public class RainbowTreesListener {
 
     @SuppressWarnings("unused")
     @EventListener
-    public void generateTrees(LevelGenEvent.ChunkDecoration chunkDecoration)
+    public void generateTrees(LevelGenEvent.ChunkDecoration event)
     {
-        if (chunkDecoration.levelSource.getClass() == OverworldLevelSource.class)
+        if (event.level.dimension.id == 0)
         {
             for (int iq = 0; iq < 8; iq++) {
-                int chunkpX = chunkDecoration.x + chunkDecoration.random.nextInt(16);
-                int chunkpZ = chunkDecoration.z + chunkDecoration.random.nextInt(16);
-                int chunkpY = chunkDecoration.random.nextInt(128);
-                ColourTreeStructure structure = new ColourTreeStructure(chunkDecoration.random.nextInt(17));
-                if (structure.generate(chunkDecoration.level, chunkDecoration.random, chunkpX, chunkpY, chunkpZ))
-                    structure.generate(chunkDecoration.level, chunkDecoration.random, chunkpX, chunkpY, chunkpZ);
+                int chunkpX = event.x + event.random.nextInt(16);
+                int chunkpZ = event.z + event.random.nextInt(16);
+                int chunkpY = event.random.nextInt(128);
+                ColourTreeStructure structure = new ColourTreeStructure(event.random.nextInt(17));
+                if (structure.generate(event.level, event.random, chunkpX, chunkpY, chunkpZ))
+                    structure.generate(event.level, event.random, chunkpX, chunkpY, chunkpZ);
             }
         }
     }
