@@ -48,7 +48,7 @@ public class ColourTreeStructure extends Structure {
         for(int i1 = 0; i1 < h1; i1++)
             if(i1 == 0)
                 for(int i2 = 0; i2 < 3; i2++)
-                    level.setTileWithMetadata(x,y+(i1*3)+i2,z,BlockBase.LOG.id, randomTreeBlock);
+                    level.setTileWithMetadata(x,y+i2,z,BlockBase.LOG.id, randomTreeBlock);
             else {
                 for (int x1 = 0; x1 < 3; x1++)
                     for (int z1 = 0; z1 < 3; z1++)
@@ -75,51 +75,51 @@ public class ColourTreeStructure extends Structure {
     public void generateType2(Level level, Random rand, int x, int y, int z)
     {
         int var6 = rand.nextInt(3) + 4;
-        boolean var7 = true;
+        boolean b = true;
         if (y >= 1 && y + var6 + 1 <= 128) {
-            int var8;
-            int var10;
+            int i;
+            int q;
             int var11;
             int var12;
-            for(var8 = y; var8 <= y + 1 + var6; ++var8) {
-                byte var9 = 1;
-                if (var8 == y) {
-                    var9 = 0;
+            for(i = y; i <= y + 1 + var6; ++i) {
+                byte sz = 1;
+                if (i == y) {
+                    sz = 0;
                 }
 
-                if (var8 >= y + 1 + var6 - 2) {
-                    var9 = 2;
+                if (i >= y + 1 + var6 - 2) {
+                    sz = 2;
                 }
 
-                for(var10 = x - var9; var10 <= x + var9 && var7; ++var10) {
-                    for(var11 = z - var9; var11 <= z + var9 && var7; ++var11) {
-                        if (var8 >= 0 && var8 < 128) {
-                            var12 = level.getTileId(var10, var8, var11);
+                for(q = x - sz; q <= x + sz && b; ++q) {
+                    for(var11 = z - sz; var11 <= z + sz && b; ++var11) {
+                        if (i >= 0 && i < 128) {
+                            var12 = level.getTileId(q, i, var11);
                             if (var12 != 0 && var12 != RainbowTreesListener.leaves_colour.id) {
-                                var7 = false;
+                                b = false;
                             }
                         } else {
-                            var7 = false;
+                            b = false;
                         }
                     }
                 }
             }
 
-                var8 = level.getTileId(x, y - 1, z);
-                if ((var8 == BlockBase.GRASS.id || var8 == BlockBase.DIRT.id) && y < 128 - var6 - 1) {
+                i = level.getTileId(x, y - 1, z);
+                if ((i == BlockBase.GRASS.id || i == BlockBase.DIRT.id) && y < 128 - var6 - 1) {
                     level.setTileInChunk(x, y - 1, z, BlockBase.DIRT.id);
 
                     int var16;
                     for (var16 = y - 3 + var6; var16 <= y + var6; ++var16) {
-                        var10 = var16 - (y + var6);
-                        var11 = 1 - var10 / 2;
+                        q = var16 - (y + var6);
+                        var11 = 1 - q / 2;
 
                         for (var12 = x - var11; var12 <= x + var11; ++var12) {
                             int var13 = var12 - x;
 
                             for (int var14 = z - var11; var14 <= z + var11; ++var14) {
                                 int var15 = var14 - z;
-                                if ((Math.abs(var13) != var11 || Math.abs(var15) != var11 || rand.nextInt(2) != 0 && var10 != 0) && !BlockBase.FULL_OPAQUE[level.getTileId(var12, var16, var14)]) {
+                                if ((Math.abs(var13) != var11 || Math.abs(var15) != var11 || rand.nextInt(2) != 0 && q != 0) && !BlockBase.FULL_OPAQUE[level.getTileId(var12, var16, var14)]) {
                                     level.setTileWithMetadata(var12, var16, var14, RainbowTreesListener.leaves_colour.id, selectedMetadata);
                                 }
                             }
@@ -127,8 +127,8 @@ public class ColourTreeStructure extends Structure {
                     }
 
                     for (var16 = 0; var16 < var6; ++var16) {
-                        var10 = level.getTileId(x, y + var16, z);
-                        if (var10 == 0 || var10 == RainbowTreesListener.leaves_colour.id) {
+                        q = level.getTileId(x, y + var16, z);
+                        if (q == 0 || q == RainbowTreesListener.leaves_colour.id) {
                             level.setTileWithMetadata(x, y + var16, z, BlockBase.LOG.id, randomTreeBlock);
                         }
                     }
