@@ -65,25 +65,14 @@ public class BlockColourLeaves extends TemplateLeaves {
         if (!level.isClient) {
             int meta = level.getTileMeta(x, y, z);
             if ((meta & 8) != 0) {
-                byte var7 = 4;
-                int var8 = var7 + 1;
-                byte var9 = 32;
-                int var10 = var9 * var9;
-                int var11 = var9 / 2;
                 if (this.collection == null)
-                    this.collection = new int[var9 * var9 * var9];
-
-
-                int var12;
-                if (level.method_155(x - var8, y - var8, z - var8, x + var8, y + var8, z + var8)) {
-                    var12 = -var7;
+                    this.collection = new int[32768];
+                if (level.method_155(x - 5, y - 5, z - 5, x + 5, y + 5, z + 5)) {
+                    int var12 = -4;
 
                     label_tree:
                     while(true) {
-                        int loop1;
-                        int loop2;
-                        int loop3;
-                        if (var12 > var7) {
+                        if (var12 > 4) {
                             var12 = 1;
 
                             while(true) {
@@ -91,32 +80,32 @@ public class BlockColourLeaves extends TemplateLeaves {
                                     break label_tree;
                                 }
 
-                                for(loop1 = -var7; loop1 <= var7; ++loop1) {
-                                    for(loop2 = -var7; loop2 <= var7; ++loop2) {
-                                        for(loop3 = -var7; loop3 <= var7; ++loop3) {
-                                            if (this.collection[(loop1 + var11) * var10 + (loop2 + var11) * var9 + loop3 + var11] == var12 - 1) {
-                                                if (this.collection[(loop1 + var11 - 1) * var10 + (loop2 + var11) * var9 + loop3 + var11] == -2) {
-                                                    this.collection[(loop1 + var11 - 1) * var10 + (loop2 + var11) * var9 + loop3 + var11] = var12;
+                                for(byte loop1 = -4; loop1 <= 4; ++loop1) {
+                                    for(byte loop2 = -4; loop2 <= 4; ++loop2) {
+                                        for(byte loop3 = -4; loop3 <= 4; ++loop3) {
+                                            if (this.collection[(loop1 + 16) * 1024 + (loop2 + 16) * 32 + loop3 + 16] == var12 - 1) {
+                                                if (this.collection[(loop1 + 16 - 1) * 1024 + (loop2 + 16) * 32 + loop3 + 16] == -2) {
+                                                    this.collection[(loop1 + 16 - 1) * 1024 + (loop2 + 16) * 32 + loop3 + 16] = var12;
                                                 }
 
-                                                if (this.collection[(loop1 + var11 + 1) * var10 + (loop2 + var11) * var9 + loop3 + var11] == -2) {
-                                                    this.collection[(loop1 + var11 + 1) * var10 + (loop2 + var11) * var9 + loop3 + var11] = var12;
+                                                if (this.collection[(loop1 + 16 + 1) * 1024 + (loop2 + 16) * 32 + loop3 + 16] == -2) {
+                                                    this.collection[(loop1 + 16 + 1) * 1024 + (loop2 + 16) * 32 + loop3 + 16] = var12;
                                                 }
 
-                                                if (this.collection[(loop1 + var11) * var10 + (loop2 + var11 - 1) * var9 + loop3 + var11] == -2) {
-                                                    this.collection[(loop1 + var11) * var10 + (loop2 + var11 - 1) * var9 + loop3 + var11] = var12;
+                                                if (this.collection[(loop1 + 16) * 1024 + (loop2 + 16 - 1) * 32 + loop3 + 16] == -2) {
+                                                    this.collection[(loop1 + 16) * 1024 + (loop2 + 16 - 1) * 32 + loop3 + 16] = var12;
                                                 }
 
-                                                if (this.collection[(loop1 + var11) * var10 + (loop2 + var11 + 1) * var9 + loop3 + var11] == -2) {
-                                                    this.collection[(loop1 + var11) * var10 + (loop2 + var11 + 1) * var9 + loop3 + var11] = var12;
+                                                if (this.collection[(loop1 + 16) * 1024 + (loop2 + 16 + 1) * 32 + loop3 + 16] == -2) {
+                                                    this.collection[(loop1 + 16) * 1024 + (loop2 + 16 + 1) * 32 + loop3 + 16] = var12;
                                                 }
 
-                                                if (this.collection[(loop1 + var11) * var10 + (loop2 + var11) * var9 + (loop3 + var11 - 1)] == -2) {
-                                                    this.collection[(loop1 + var11) * var10 + (loop2 + var11) * var9 + (loop3 + var11 - 1)] = var12;
+                                                if (this.collection[(loop1 + 16) * 1024 + (loop2 + 16) * 32 + (loop3 + 16 - 1)] == -2) {
+                                                    this.collection[(loop1 + 16) * 1024 + (loop2 + 16) * 32 + (loop3 + 16 - 1)] = var12;
                                                 }
 
-                                                if (this.collection[(loop1 + var11) * var10 + (loop2 + var11) * var9 + loop3 + var11 + 1] == -2) {
-                                                    this.collection[(loop1 + var11) * var10 + (loop2 + var11) * var9 + loop3 + var11 + 1] = var12;
+                                                if (this.collection[(loop1 + 16) * 1024 + (loop2 + 16) * 32 + loop3 + 16 + 1] == -2) {
+                                                    this.collection[(loop1 + 16) * 1024 + (loop2 + 16) * 32 + loop3 + 16 + 1] = var12;
                                                 }
                                             }
                                         }
@@ -127,15 +116,15 @@ public class BlockColourLeaves extends TemplateLeaves {
                             }
                         }
 
-                        for(loop1 = -var7; loop1 <= var7; ++loop1) {
-                            for(loop2 = -var7; loop2 <= var7; ++loop2) {
-                                loop3 = level.getTileId(x + var12, y + loop1, z + loop2);
+                        for(byte loop1 = -4; loop1 <= 4; ++loop1) {
+                            for(byte loop2 = -4; loop2 <= 4; ++loop2) {
+                                int loop3 = level.getTileId(x + var12, y + loop1, z + loop2);
                                 if (loop3 == BlockBase.LOG.id) {
-                                    this.collection[(var12 + var11) * var10 + (loop1 + var11) * var9 + loop2 + var11] = 0;
+                                    this.collection[(var12 + 16) * 1024 + (loop1 + 16) * 32 + loop2 + 16] = 0;
                                 } else if (loop3 == RainbowTreesListener.leaves_colour.id) {
-                                    this.collection[(var12 + var11) * var10 + (loop1 + var11) * var9 + loop2 + var11] = -2;
+                                    this.collection[(var12 + 16) * 1024 + (loop1 + 16) * 32 + loop2 + 16] = -2;
                                 } else {
-                                    this.collection[(var12 + var11) * var10 + (loop1 + var11) * var9 + loop2 + var11] = -1;
+                                    this.collection[(var12 + 16) * 1024 + (loop1 + 16) * 32 + loop2 + 16] = -1;
                                 }
                             }
                         }
@@ -143,13 +132,10 @@ public class BlockColourLeaves extends TemplateLeaves {
                         ++var12;
                     }
                 }
-
-                var12 = this.collection[var11 * var10 + var11 * var9 + var11];
-                if (var12 >= 0) {
+                if (this.collection[16912] >= 0)
                     level.method_223(x, y, z, meta);
-                } else {
+                else
                     this.destroy(level, x, y, z);
-                }
             }
 
         }
@@ -172,10 +158,7 @@ public class BlockColourLeaves extends TemplateLeaves {
         if (!arg.isClient && arg1.getHeldItem() != null && arg1.getHeldItem().itemId == ItemBase.shears.id) {
             arg1.increaseStat(Stats.mineBlock[this.id], 1);
             this.drop(arg, x, y, z, new ItemInstance(RainbowTreesListener.leaves_colour.id, 1, i1));
-        } else {
-            super.afterBreak(arg, arg1, x, y, z, i1);
-        }
-
+        } else super.afterBreak(arg, arg1, x, y, z, i1);
     }
 
     protected int droppedMeta(int i) {

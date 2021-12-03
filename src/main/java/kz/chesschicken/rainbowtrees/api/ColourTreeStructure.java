@@ -13,20 +13,20 @@ public class ColourTreeStructure extends Structure {
     private int selectedType;
     private final int selectedMetadata;
 
-    public ColourTreeStructure(int metadata)
-    {
-        selectedMetadata = metadata;
+    public ColourTreeStructure(int metadata) {
+        this.selectedType = -1;
+        this.selectedMetadata = metadata;
     }
 
-    public ColourTreeStructure(int type, int metadata)
-    {
+    public ColourTreeStructure(int type, int metadata) {
         this.selectedType = type;
         this.selectedMetadata = metadata;
     }
 
     @Override
     public boolean generate(Level level, Random rand, int x, int y, int z) {
-        selectedType = rand.nextInt(2);
+        if(selectedType < 0)
+            selectedType = rand.nextInt(2);
         randomTreeBlock = rand.nextInt(3);
 
         if((level.isAir(x, y, z) || level.getTileId(x, y, z) == BlockBase.SNOW.id || level.getTileId(x, y, z) == RainbowTreesListener.sapling_colour.id) && level.getMaterial(x,y-1,z) == Material.ORGANIC) {
