@@ -20,6 +20,9 @@
   "entrypoints": {
     "stationapi:event_bus": [
       "kz.chesschicken.rainbowtrees.init.RainbowTreesListener"
+    ],
+    "stationapi:event_bus_client": [
+      "kz.chesschicken.rainbowtrees.init.RainbowTreesClientListener"
     ]
   },
 

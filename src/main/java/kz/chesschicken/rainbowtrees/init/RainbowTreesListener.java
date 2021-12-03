@@ -7,8 +7,6 @@ import kz.chesschicken.rainbowtrees.blocks.BlockColourSapling;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.item.ItemBase;
 import net.minecraft.item.ItemInstance;
-import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
-import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
 import net.modificationstation.stationapi.api.event.level.gen.LevelGenEvent;
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
@@ -20,46 +18,26 @@ import net.modificationstation.stationapi.api.template.block.TemplateLeaves;
 import net.modificationstation.stationapi.api.template.block.TemplatePlant;
 import net.modificationstation.stationapi.api.util.Null;
 
-import java.awt.*;
-
 public class RainbowTreesListener {
 
-    public static int get16ColorCode(int i)
-    {
-        switch (i)
-        {
-            case 0:
-                return new Color(221,221,221).getRGB();
-            case 1:
-                return new Color(219,125,62).getRGB();
-            case 2:
-                return new Color(179,80,188).getRGB();
-            case 3:
-                return new Color(107,138,201).getRGB();
-            case 4:
-                return new Color(177,166,39).getRGB();
-            case 5:
-                return new Color(65,164,56).getRGB();
-            case 6:
-                return new Color(208,132,153).getRGB();
-            case 7:
-                return new Color(64,64,64).getRGB();
-            case 8:
-                return new Color(154,161,161).getRGB();
-            case 9:
-                return new Color(46,110,137).getRGB();
-            case 10:
-                return new Color(126,61,181).getRGB();
-            case 11:
-                return new Color(46,56,141).getRGB();
-            case 12:
-                return new Color(79,50,31).getRGB();
-            case 13:
-                return new Color(53,70,27).getRGB();
-            case 14:
-                return new Color(150,52,48).getRGB();
-            case 15:
-                return new Color(25,22,22).getRGB();
+    public static int get16ColorCode(int i) {
+        switch (i) {
+            case 0: return 14540253; //221;221;221
+            case 1: return 14384446; //219;125;62
+            case 2: return 11751612; //179;80;188
+            case 3: return 7047881; //107;138;201
+            case 4: return 11642407; //177;166;39
+            case 5: return 4301880; //65;164;56
+            case 6: return 13665433; //208;132;153
+            case 7: return 4210752; //64;64;64
+            case 8: return 10133921; //154;161;161
+            case 9: return 3042953; //46;110;137
+            case 10: return 8273333; //126;61;181
+            case 11: return 3029133; //46;56;141
+            case 12: return 5190175; //79;50;31
+            case 13: return 3491355; //53;70;27
+            case 14: return 9843760; //150;52;48
+            case 15: return 1644054; //25;22;22
         }
         return 0;
     }
@@ -86,19 +64,8 @@ public class RainbowTreesListener {
 
     @SuppressWarnings("unused")
     @EventListener
-    public void registerTextures(TextureRegisterEvent event) {
-        textColourSapling = Atlases.getStationTerrain().addTexture("/assets/rainbowtrees/textures/block/sapling_colour.png").index;
-        textColourLeaves = Atlases.getStationTerrain().addTexture("/assets/rainbowtrees/textures/block/leaves_colour.png").index;
-        textColourLeaves_Fast = Atlases.getStationTerrain().addTexture("/assets/rainbowtrees/textures/block/leaves_colour_opaque.png").index;
-        textColourFlower = Atlases.getStationTerrain().addTexture("/assets/rainbowtrees/textures/block/flower_colour.png").index;
-    }
-
-    @SuppressWarnings("unused")
-    @EventListener
-    public void generateTrees(LevelGenEvent.ChunkDecoration event)
-    {
-        if (event.level.dimension.id == 0)
-        {
+    public void generateTrees(LevelGenEvent.ChunkDecoration event) {
+        if (event.level.dimension.id == 0) {
             for (int iq = 0; iq < 8; iq++) {
                 int chunkpX = event.x + event.random.nextInt(16);
                 int chunkpZ = event.z + event.random.nextInt(16);
@@ -112,8 +79,7 @@ public class RainbowTreesListener {
 
     @SuppressWarnings("unused")
     @EventListener
-    public void registerRecipes(RecipeRegisterEvent event)
-    {
+    public void registerRecipes(RecipeRegisterEvent event) {
         if (RecipeRegisterEvent.Vanilla.fromType(event.recipeId) == RecipeRegisterEvent.Vanilla.CRAFTING_SHAPELESS) {
             for (int i = 0; i < 16; i++)
                 CraftingRegistry.addShapelessRecipe(
